@@ -26,4 +26,11 @@ public class FizzBuzzTest {
         assertThat(fizzBuzz.get(6), is("Fizz"));
         assertThat(fizzBuzz.get(9), is("Fizz"));
     }
+
+    @Test
+    public void getBuzzForNumberDivisibleByFive() {
+        assertThat(fizzBuzz.get(5), is("Buzz"));
+        assertThat(fizzBuzz.get(10), is("Buzz"));
+        assertThat(fizzBuzz.get(25), is("Buzz"));
+    }
 }
