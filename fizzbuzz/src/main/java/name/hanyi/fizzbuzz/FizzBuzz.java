@@ -2,6 +2,9 @@ package name.hanyi.fizzbuzz;
 
 public class FizzBuzz {
     public String get(int number) {
+        if (isDivisibleBy(number, 5) && isDivisibleBy(number, 3)) {
+            return "FizzBuzz";
+        }
         if (isDivisibleBy(number, 5)) {
             return "Buzz";
         }
