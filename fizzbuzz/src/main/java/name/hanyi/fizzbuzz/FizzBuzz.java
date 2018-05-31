@@ -1,13 +1,17 @@
 package name.hanyi.fizzbuzz;
 
 public class FizzBuzz {
-    public String get(int i) {
-        if (i % 5 == 0) {
+    public String get(int number) {
+        if (isDivisibleBy(number, 5)) {
             return "Buzz";
         }
-        if (i % 3 == 0) {
+        if (isDivisibleBy(number, 3)) {
             return "Fizz";
         }
-        return String.valueOf(i);
+        return String.valueOf(number);
+    }
+
+    private boolean isDivisibleBy(int number, int divisor) {
+        return number % divisor == 0;
     }
 }
