@@ -28,10 +28,24 @@ public class FizzBuzzTest {
     }
 
     @Test
+    public void getFizzForNumberIfContainsThree() {
+        assertThat(fizzBuzz.get(13), is("Fizz"));
+        assertThat(fizzBuzz.get(23), is("Fizz"));
+        assertThat(fizzBuzz.get(43), is("Fizz"));
+    }
+
+    @Test
     public void getBuzzForNumberDivisibleByFive() {
         assertThat(fizzBuzz.get(5), is("Buzz"));
         assertThat(fizzBuzz.get(10), is("Buzz"));
         assertThat(fizzBuzz.get(25), is("Buzz"));
+    }
+
+    @Test
+    public void getBuzzForNumberIfContainsFive() {
+        assertThat(fizzBuzz.get(52), is("Buzz"));
+        assertThat(fizzBuzz.get(53), is("Buzz"));
+        assertThat(fizzBuzz.get(59), is("Buzz"));
     }
 
     @Test
