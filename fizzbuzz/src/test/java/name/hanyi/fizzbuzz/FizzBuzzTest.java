@@ -19,4 +19,11 @@ public class FizzBuzzTest {
     public void getExactlySameOutputForNormalInput() {
         assertThat(fizzBuzz.get(1), is("1"));
     }
+
+    @Test
+    public void getFizzForNumberDivisibleByThree() {
+        assertThat(fizzBuzz.get(3), is("Fizz"));
+        assertThat(fizzBuzz.get(6), is("Fizz"));
+        assertThat(fizzBuzz.get(9), is("Fizz"));
+    }
 }
