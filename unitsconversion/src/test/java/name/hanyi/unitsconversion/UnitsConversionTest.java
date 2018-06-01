@@ -17,7 +17,8 @@ public class UnitsConversionTest {
 
     @Test
     public void getKilogramsByGivenPounds() {
-        assertThat(unitsConversion.get(1), is(0.45359237D));
-        assertThat(unitsConversion.get(1.5D), is(0.68038856D));
+        assertThat(unitsConversion.get(1).doubleValue(), is(0.45359237D));
+        assertThat(unitsConversion.get(1.5D).doubleValue(), is(0.68038856D));
+        assertThat(unitsConversion.get(100D).doubleValue(), is(45.359237D));
     }
 }
