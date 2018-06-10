@@ -5,10 +5,13 @@ import java.math.RoundingMode;
 
 public class UnitsConversion {
     public static final int PRECISION = 8;
-    public static final double RATIO_POUND_TO_KILO = 0.45359237D;
-    public static final double RATIO_INCH_TO_CM = 2.54D;
+    private UnitsTable unitsTable;
     private String sourceUnit;
     private String targetUnit;
+
+    public UnitsConversion() {
+        this.unitsTable = new UnitsTable();
+    }
 
     public BigDecimal get(double number) {
         return BigDecimal.valueOf(calculate(number))
@@ -16,10 +19,11 @@ public class UnitsConversion {
     }
 
     private double calculate(double number) {
-        if (this.sourceUnit.equals("inch") && this.targetUnit.equals("cm")) {
-            return number * RATIO_INCH_TO_CM;
+        if (this.unitsTable.validUnit(this.sourceUnit, this.targetUnit)) {
+            UnitsRatio unitsRatio = unitsTable.getUnitRatio(this.sourceUnit);
+            return unitsRatio.getRatio(this.targetUnit) * number / unitsRatio.getRatio(this.sourceUnit);
         }
-        return number * RATIO_POUND_TO_KILO;
+        throw new RuntimeException();
     }
 
     public void setUnits(String sourceUnit, String targetUnit) {
