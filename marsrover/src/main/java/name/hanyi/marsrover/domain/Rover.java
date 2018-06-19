@@ -21,8 +21,9 @@ public class Rover implements Turnable, Movable {
     }
 
     @Override
-    public boolean stepForward() {
-        return false;
+    public Position stepForward() {
+        this.position = forward(this.direction, this.position, 1);
+        return this.position;
     }
 
     @Override

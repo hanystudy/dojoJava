@@ -28,4 +28,11 @@ public class RoverTest {
         rover.turnLeft();
         assertThat(rover.getDirection(), is(Direction.NORTH));
     }
+
+    @Test
+    public void shouldBeMovable() {
+        rover.stepForward();
+        assertThat(rover.getPosition(), is(new Position(5, 6)));
+        assertThat(rover.getDirection(), is(Direction.NORTH));
+    }
 }
