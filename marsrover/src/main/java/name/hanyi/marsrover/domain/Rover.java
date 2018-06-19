@@ -1,6 +1,9 @@
 package name.hanyi.marsrover.domain;
 
-public class Rover {
+import name.hanyi.marsrover.action.Movable;
+import name.hanyi.marsrover.action.Turnable;
+
+public class Rover implements Turnable, Movable {
     private Position position;
     private Direction direction;
 
@@ -14,6 +17,23 @@ public class Rover {
     }
 
     public Direction getDirection() {
+        return this.direction;
+    }
+
+    @Override
+    public boolean stepForward() {
+        return false;
+    }
+
+    @Override
+    public Direction turnLeft() {
+        this.direction = this.direction.getLeft();
+        return this.direction;
+    }
+
+    @Override
+    public Direction turnRight() {
+        this.direction = this.direction.getRight();
         return this.direction;
     }
 }

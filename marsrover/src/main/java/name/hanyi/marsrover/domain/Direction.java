@@ -1,15 +1,17 @@
 package name.hanyi.marsrover.domain;
 
 public enum Direction {
-    EAST("E"),
-    SOURTH("S"),
-    WEST("W"),
-    NORTH("N");
+    EAST("E", 0),
+    SOUTH("S", 1),
+    WEST("W", 2),
+    NORTH("N", 3);
 
     private String directionText;
+    private int sequenceNum;
 
-    Direction(String directionText) {
+    Direction(String directionText, int sequenceNum) {
         this.directionText = directionText;
+        this.sequenceNum = sequenceNum;
     }
 
     public String getDirectionText() {
@@ -23,5 +25,23 @@ public enum Direction {
             }
         }
         return null;
+    }
+
+    public static Direction fromInteger(int sequenceNum) {
+        for(Direction direction : Direction.values()) {
+            if(direction.sequenceNum == sequenceNum) {
+                return direction;
+            }
+        }
+        return null;
+    }
+
+    public Direction getRight() {
+        return Direction.fromInteger((this.sequenceNum + 1) % 4);
+    }
+
+    public Direction getLeft() {
+        int nextSequenceNum = this.sequenceNum == 0 ? 3 : (this.sequenceNum - 1) % 4;
+        return Direction.fromInteger(nextSequenceNum);
     }
 }

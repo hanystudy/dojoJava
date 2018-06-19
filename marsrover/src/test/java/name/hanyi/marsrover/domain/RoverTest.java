@@ -20,4 +20,12 @@ public class RoverTest {
         assertThat(rover.getPosition(), is(new Position(5, 5)));
         assertThat(rover.getDirection(), is(Direction.NORTH));
     }
+
+    @Test
+    public void shouldBeTurnable() {
+        rover.turnRight();
+        assertThat(rover.getDirection(), is(Direction.EAST));
+        rover.turnLeft();
+        assertThat(rover.getDirection(), is(Direction.NORTH));
+    }
 }
