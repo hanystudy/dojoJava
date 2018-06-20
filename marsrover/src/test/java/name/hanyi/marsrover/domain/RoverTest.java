@@ -1,5 +1,6 @@
 package name.hanyi.marsrover.domain;
 
+import name.hanyi.marsrover.exception.InvalidMarsPositionException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,7 +32,11 @@ public class RoverTest {
 
     @Test
     public void shouldBeMovable() {
-        rover.stepForward();
+        try {
+            rover.stepForward();
+        } catch (InvalidMarsPositionException e) {
+            e.printStackTrace();
+        }
         assertThat(rover.getPosition(), is(new Position(5, 6)));
         assertThat(rover.getDirection(), is(Direction.NORTH));
     }

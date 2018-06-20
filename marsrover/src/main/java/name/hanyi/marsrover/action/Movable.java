@@ -2,9 +2,10 @@ package name.hanyi.marsrover.action;
 
 import name.hanyi.marsrover.domain.Direction;
 import name.hanyi.marsrover.domain.Position;
+import name.hanyi.marsrover.exception.InvalidMarsPositionException;
 
 public interface Movable {
-    public Position stepForward();
+    public Position stepForward() throws InvalidMarsPositionException;
 
     public default Position forward(Direction direction, Position position, int step) {
         switch(direction) {

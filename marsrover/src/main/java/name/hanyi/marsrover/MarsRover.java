@@ -4,6 +4,7 @@ import name.hanyi.marsrover.domain.Direction;
 import name.hanyi.marsrover.domain.Mars;
 import name.hanyi.marsrover.domain.Position;
 import name.hanyi.marsrover.domain.Rover;
+import name.hanyi.marsrover.exception.InvalidMarsPositionException;
 
 import java.util.*;
 
@@ -23,7 +24,7 @@ public class MarsRover {
         return this.rover;
     }
 
-    public void runRover(String commands) {
+    public void runRover(String commands) throws InvalidMarsPositionException {
         for(char cmd : commands.toCharArray()) {
             switch(cmd) {
                 case 'L':
@@ -60,9 +61,14 @@ public class MarsRover {
         System.out.println("Expected output:");
         marsRover.buildMars(inputs.remove());
         do {
-            marsRover.buildRover(inputs.remove());
-            marsRover.runRover(inputs.remove());
-            System.out.println(marsRover.getRoverLocation().toString() + " " + marsRover.getRoverDirection().toString());
+            try {
+                marsRover.buildRover(inputs.remove());
+                marsRover.runRover(inputs.remove());
+                System.out.println(marsRover.getRoverLocation().toString() + " " + marsRover.getRoverDirection().toString());
+            }
+            catch(InvalidMarsPositionException e) {
+                System.out.println("RIP " + marsRover.getRoverLocation().toString() + " " + marsRover.getRoverDirection().toString());
+            }
         } while(!inputs.isEmpty());
     }
 }

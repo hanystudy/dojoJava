@@ -4,6 +4,7 @@ import name.hanyi.marsrover.domain.Direction;
 import name.hanyi.marsrover.domain.Mars;
 import name.hanyi.marsrover.domain.Position;
 import name.hanyi.marsrover.domain.Rover;
+import name.hanyi.marsrover.exception.InvalidMarsPositionException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,7 +26,11 @@ public class MarsRoverTest {
 
     @Test
     public void stopAtSamePositionIfRoverCanNotForward() {
-        rover.stepForward();
+        try {
+            rover.stepForward();
+        } catch (InvalidMarsPositionException e) {
+            e.printStackTrace();
+        }
         assertThat(rover.getPosition(), is(new Position(5, 5)));
         assertThat(rover.getDirection(), is(Direction.NORTH));
     }
@@ -34,7 +39,11 @@ public class MarsRoverTest {
     public void shouldRunViaCommandsContainL() {
         marsRover.buildMars("5 5");
         marsRover.buildRover("1 2 N");
-        marsRover.runRover("LMLMLMLMM");
+        try {
+            marsRover.runRover("LMLMLMLMM");
+        } catch (InvalidMarsPositionException e) {
+            e.printStackTrace();
+        }
         assertThat(marsRover.getRoverLocation(), is(new Position(1, 3)));
         assertThat(marsRover.getRoverDirection(), is(Direction.NORTH));
     }
@@ -43,7 +52,11 @@ public class MarsRoverTest {
     public void shouldRunViaCommandsContainR() {
         marsRover.buildMars("5 5");
         marsRover.buildRover("3 3 E");
-        marsRover.runRover("MMRMMRMRRM");
+        try {
+            marsRover.runRover("MMRMMRMRRM");
+        } catch (InvalidMarsPositionException e) {
+            e.printStackTrace();
+        }
         assertThat(marsRover.getRoverLocation(), is(new Position(5, 1)));
         assertThat(marsRover.getRoverDirection(), is(Direction.EAST));
     }

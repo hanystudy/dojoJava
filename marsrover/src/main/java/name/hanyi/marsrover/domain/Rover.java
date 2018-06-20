@@ -2,6 +2,7 @@ package name.hanyi.marsrover.domain;
 
 import name.hanyi.marsrover.action.Movable;
 import name.hanyi.marsrover.action.Turnable;
+import name.hanyi.marsrover.exception.InvalidMarsPositionException;
 
 public class Rover implements Turnable, Movable {
     private Position position;
@@ -28,10 +29,12 @@ public class Rover implements Turnable, Movable {
     }
 
     @Override
-    public Position stepForward() {
+    public Position stepForward() throws InvalidMarsPositionException {
         Position position = forward(this.direction, this.position, 1);
         if(mars == null || mars.validPosition(position)) {
             this.position = position;
+        } else {
+            throw new InvalidMarsPositionException();
         }
         return this.position;
     }
