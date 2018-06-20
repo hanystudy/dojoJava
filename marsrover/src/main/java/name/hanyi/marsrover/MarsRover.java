@@ -5,6 +5,8 @@ import name.hanyi.marsrover.domain.Mars;
 import name.hanyi.marsrover.domain.Position;
 import name.hanyi.marsrover.domain.Rover;
 
+import java.util.*;
+
 public class MarsRover {
     private Mars mars;
     private Rover rover;
@@ -45,5 +47,22 @@ public class MarsRover {
 
     public Direction getRoverDirection() {
         return this.rover.getDirection();
+    }
+
+    public static void main(String[] args) {
+        MarsRover marsRover = new MarsRover();
+        Queue<String> inputs = new LinkedList<>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Test input:");
+        while(scanner.hasNextLine()) {
+            inputs.add(scanner.nextLine());
+        }
+        System.out.println("Expected output:");
+        marsRover.buildMars(inputs.remove());
+        do {
+            marsRover.buildRover(inputs.remove());
+            marsRover.runRover(inputs.remove());
+            System.out.println(marsRover.getRoverLocation().toString() + " " + marsRover.getRoverDirection().toString());
+        } while(!inputs.isEmpty());
     }
 }

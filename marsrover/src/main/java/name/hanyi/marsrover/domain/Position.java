@@ -18,6 +18,11 @@ public class Position {
     }
 
     @Override
+    public String toString() {
+        return getX() + " " + getY();
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (obj instanceof Position) {
             Position pos = (Position) obj;

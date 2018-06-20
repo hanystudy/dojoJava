@@ -36,6 +36,11 @@ public enum Direction {
         return null;
     }
 
+    @Override
+    public String toString() {
+        return this.getDirectionText();
+    }
+
     public Direction getRight() {
         return Direction.fromInteger((this.sequenceNum + 1) % 4);
     }
