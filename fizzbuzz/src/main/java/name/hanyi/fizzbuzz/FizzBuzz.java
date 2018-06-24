@@ -1,5 +1,10 @@
 package name.hanyi.fizzbuzz;
 
+import name.hanyi.fizzbuzz.annotation.Author;
+
+@Author(
+    date = "06/24/2018"
+)
 public class FizzBuzz {
     public String get(int number) {
         if (isDivisibleBy(number, 5) && isDivisibleBy(number, 3)) {
