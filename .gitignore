@@ -1,7 +1,11 @@
 .gradle
 /build/
 !gradle/wrapper/gradle-wrapper.jar
+gradle/
 .git.bfg-report/
+
+### Vim ###
+*.swp
 
 ### STS ###
 .apt_generated
