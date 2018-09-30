@@ -3,6 +3,12 @@ package name.hanyi.karatechop;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import static org.junit.Assert.assertEquals;
 
 public class KarateChopTest {
@@ -24,5 +30,13 @@ public class KarateChopTest {
         assertEquals(4, chop.chop(9, inputArray));
         assertEquals(5, chop.chop(11, inputArray));
         assertEquals(-1, chop.chop(2, inputArray));
+    }
+
+    @Test
+    public void testLargeDataSetUsingCharacterReader() throws IOException, URISyntaxException {
+        URL resourceURL = KarateChopTest.class.getClassLoader().getResource("sample.txt");
+        Path path = Paths.get(resourceURL.toURI());
+        assertEquals(499, chop.chopFile(500, path));
+        assertEquals(997, chop.chopFile(999, path));
     }
 }
