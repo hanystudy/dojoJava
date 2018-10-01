@@ -4,6 +4,7 @@ import name.hanyi.fileencodingconverter.reader.FileEncodingCharacterReader;
 import name.hanyi.fileencodingconverter.reader.FileEncodingDataReader;
 import name.hanyi.fileencodingconverter.reader.FileEncodingObjectReader;
 import name.hanyi.fileencodingconverter.reader.FileEncodingReader;
+import name.hanyi.fileencodingconverter.reader.FileEncodingScanner;
 import name.hanyi.fileencodingconverter.writer.FileEncodingCharacterWriter;
 import name.hanyi.fileencodingconverter.writer.FileEncodingDataWriter;
 import name.hanyi.fileencodingconverter.writer.FileEncodingObjectWriter;
@@ -32,6 +33,7 @@ public class FileEncodingConverterTest {
     private FileEncodingWriter dataWriter = new FileEncodingDataWriter();
     private FileEncodingWriter objectWriter = new FileEncodingObjectWriter();
     private FileEncodingReader objectReader = new FileEncodingObjectReader();
+    private FileEncodingReader scanner = new FileEncodingScanner();
 
     private FileEncodingConverter converter;
 
@@ -93,6 +95,19 @@ public class FileEncodingConverterTest {
 
         URL characterURL = getClass().getClassLoader().getResource("character.txt");
         assertTrue(compareTwoFiles(outputFile.toPath(), Paths.get(characterURL.toURI())));
+    }
+
+    @Test
+    public void convertCharToDataByScanner() throws IOException, URISyntaxException, ClassNotFoundException {
+        URL resourceURL = getClass().getClassLoader().getResource("character.txt");
+        File outputFile = folder.newFile("data.txt");
+        converter.setReader(scanner);
+        converter.setWriter(dataWriter);
+
+        converter.convert(Paths.get(resourceURL.toURI()), outputFile.toPath());
+
+        URL dataURL = getClass().getClassLoader().getResource("data.txt");
+        assertTrue(compareTwoFiles(outputFile.toPath(), Paths.get(dataURL.toURI())));;
     }
 
     private boolean compareTwoFiles(Path pathFrom, Path pathTo) throws IOException {
