@@ -7,6 +7,7 @@ import name.hanyi.fileencodingconverter.reader.FileEncodingReader;
 import name.hanyi.fileencodingconverter.reader.FileEncodingScanner;
 import name.hanyi.fileencodingconverter.writer.FileEncodingCharacterWriter;
 import name.hanyi.fileencodingconverter.writer.FileEncodingDataWriter;
+import name.hanyi.fileencodingconverter.writer.FileEncodingFormatter;
 import name.hanyi.fileencodingconverter.writer.FileEncodingObjectWriter;
 import name.hanyi.fileencodingconverter.writer.FileEncodingWriter;
 import org.junit.Before;
@@ -34,6 +35,7 @@ public class FileEncodingConverterTest {
     private FileEncodingWriter objectWriter = new FileEncodingObjectWriter();
     private FileEncodingReader objectReader = new FileEncodingObjectReader();
     private FileEncodingReader scanner = new FileEncodingScanner();
+    private FileEncodingWriter formatter = new FileEncodingFormatter();
 
     private FileEncodingConverter converter;
 
@@ -108,6 +110,19 @@ public class FileEncodingConverterTest {
 
         URL dataURL = getClass().getClassLoader().getResource("data.txt");
         assertTrue(compareTwoFiles(outputFile.toPath(), Paths.get(dataURL.toURI())));;
+    }
+
+    @Test
+    public void convertObjectToCharacterByFormatter() throws URISyntaxException, IOException, ClassNotFoundException {
+        URL resourceURL = getClass().getClassLoader().getResource("object.txt");
+        File outputFile = folder.newFile("character.txt");
+        converter.setReader(objectReader);
+        converter.setWriter(formatter);
+
+        converter.convert(Paths.get(resourceURL.toURI()), outputFile.toPath());
+
+        URL characterURL = getClass().getClassLoader().getResource("character.txt");
+        assertTrue(compareTwoFiles(outputFile.toPath(), Paths.get(characterURL.toURI())));
     }
 
     private boolean compareTwoFiles(Path pathFrom, Path pathTo) throws IOException {
