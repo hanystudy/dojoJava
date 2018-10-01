@@ -5,5 +5,5 @@ import java.nio.file.Path;
 import java.util.List;
 
 public interface FileEncodingReader {
-    List<Integer> readPath(Path path) throws IOException;
+    List<Integer> readPath(Path path) throws IOException, ClassNotFoundException;
 }

@@ -20,7 +20,7 @@ public class FileEncodingConverter {
         this.reader = reader;
     }
 
-    public void convert(Path inputPath, Path outputPath) throws IOException {
+    public void convert(Path inputPath, Path outputPath) throws IOException, ClassNotFoundException {
         List<Integer> list = reader.readPath(inputPath);
         writer.writePath(list, outputPath);
     }
