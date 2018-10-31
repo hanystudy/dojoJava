@@ -7,6 +7,7 @@ import name.hanyi.filesystemexplorer.api.FileSystemCommand;
 import name.hanyi.filesystemexplorer.api.FindDirectoryContentCommand;
 import name.hanyi.filesystemexplorer.api.ListDirectoryContentCommand;
 import name.hanyi.filesystemexplorer.api.PresentDirectoryCommand;
+import name.hanyi.filesystemexplorer.api.RemoveCommand;
 import name.hanyi.filesystemexplorer.api.RootDirectoriesCommand;
 
 import java.io.Console;
@@ -21,6 +22,7 @@ public class FileSystemCommandFactory {
             new ListDirectoryContentCommand(),
             new FindDirectoryContentCommand(),
             new CreateDirectoryCommand(),
+            new RemoveCommand(),
             new PresentDirectoryCommand(),
             new FileStoreCommand(),
             new RootDirectoriesCommand(),
