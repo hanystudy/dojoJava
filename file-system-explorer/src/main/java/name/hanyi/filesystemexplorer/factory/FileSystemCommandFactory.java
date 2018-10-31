@@ -4,6 +4,7 @@ import name.hanyi.filesystemexplorer.api.CopyCommand;
 import name.hanyi.filesystemexplorer.api.CreateDirectoryCommand;
 import name.hanyi.filesystemexplorer.api.CreateFileCommand;
 import name.hanyi.filesystemexplorer.api.ExitCommand;
+import name.hanyi.filesystemexplorer.api.ExtractByteCommand;
 import name.hanyi.filesystemexplorer.api.FileStoreCommand;
 import name.hanyi.filesystemexplorer.api.FileSystemCommand;
 import name.hanyi.filesystemexplorer.api.FindDirectoryContentCommand;
@@ -25,6 +26,7 @@ public class FileSystemCommandFactory {
     private static Map<String, FileSystemCommand> commandMap = new HashMap<>();
     private static FileSystemCommand[] commandList = new FileSystemCommand[]{
             new PrintByteCommand(),
+            new ExtractByteCommand(),
             new PrintTextCommand(),
             new CreateFileCommand(),
             new ListDirectoryContentCommand(),
