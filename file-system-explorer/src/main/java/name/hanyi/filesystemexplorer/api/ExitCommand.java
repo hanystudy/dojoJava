@@ -3,7 +3,7 @@ package name.hanyi.filesystemexplorer.api;
 import java.io.Console;
 import java.io.IOException;
 
-public class ExitCommand implements FileSystemCommand {
+public class ExitCommand extends SimpleFileSystemCommand {
 
     @Override
     public String getName() {

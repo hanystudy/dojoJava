@@ -6,7 +6,7 @@ import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class CreateDirectoryCommand implements FileSystemCommand {
+public class CreateDirectoryCommand extends SimpleFileSystemCommand {
 
     @Override
     public String getName() {

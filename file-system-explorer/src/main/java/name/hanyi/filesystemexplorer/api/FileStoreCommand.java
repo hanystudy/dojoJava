@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.nio.file.FileStore;
 import java.nio.file.FileSystems;
 
-public class FileStoreCommand implements FileSystemCommand {
+public class FileStoreCommand extends SimpleFileSystemCommand {
 
     private static final int K = 1024 * 1024;
     public static final String FILE_STORES_FORMAT_STRING = "%30s %12s %12s %12s\n";

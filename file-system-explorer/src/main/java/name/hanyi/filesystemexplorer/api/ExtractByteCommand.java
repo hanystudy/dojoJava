@@ -8,7 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class ExtractByteCommand implements FileSystemCommand {
+public class ExtractByteCommand extends SimpleFileSystemCommand {
 
     @Override
     public String getName() {

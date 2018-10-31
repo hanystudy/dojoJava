@@ -15,6 +15,7 @@ import name.hanyi.filesystemexplorer.api.PrintByteCommand;
 import name.hanyi.filesystemexplorer.api.PrintTextCommand;
 import name.hanyi.filesystemexplorer.api.RemoveCommand;
 import name.hanyi.filesystemexplorer.api.RootDirectoriesCommand;
+import name.hanyi.filesystemexplorer.api.SimpleFileSystemCommand;
 
 import java.io.Console;
 import java.io.IOException;
@@ -59,7 +60,7 @@ public class FileSystemCommandFactory {
         return commandList;
     }
 
-    private static class HelpCommand implements FileSystemCommand {
+    private static class HelpCommand extends SimpleFileSystemCommand {
 
         @Override
         public String getName() {

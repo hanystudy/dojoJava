@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 
 import static java.util.Objects.nonNull;
 
-public class PrintTextCommand implements FileSystemCommand {
+public class PrintTextCommand extends SimpleFileSystemCommand {
 
     @Override
     public String getName() {

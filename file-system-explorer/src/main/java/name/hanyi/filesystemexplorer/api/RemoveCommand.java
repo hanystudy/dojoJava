@@ -6,7 +6,7 @@ import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class RemoveCommand implements FileSystemCommand {
+public class RemoveCommand extends SimpleFileSystemCommand {
 
     @Override
     public String getName() {

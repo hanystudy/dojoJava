@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 
-public class RootDirectoriesCommand implements FileSystemCommand {
+public class RootDirectoriesCommand extends SimpleFileSystemCommand {
 
     @Override
     public String getName() {

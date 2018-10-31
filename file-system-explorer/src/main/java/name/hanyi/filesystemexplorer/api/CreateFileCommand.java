@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class CreateFileCommand implements FileSystemCommand {
+public class CreateFileCommand extends SimpleFileSystemCommand {
 
     @Override
     public String getName() {

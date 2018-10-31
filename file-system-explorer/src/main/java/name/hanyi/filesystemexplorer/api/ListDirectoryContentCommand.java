@@ -7,7 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class ListDirectoryContentCommand implements FileSystemCommand {
+public class ListDirectoryContentCommand extends SimpleFileSystemCommand {
 
     @Override
     public String getName() {

@@ -15,7 +15,7 @@ import java.util.List;
 
 import static java.util.Objects.nonNull;
 
-public class FindDirectoryContentCommand implements FileSystemCommand {
+public class FindDirectoryContentCommand extends SimpleFileSystemCommand {
 
     @Override
     public String getName() {

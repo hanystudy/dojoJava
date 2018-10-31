@@ -8,7 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
-public class CopyCommand implements FileSystemCommand {
+public class CopyCommand extends SimpleFileSystemCommand {
 
     @Override
     public String getName() {
