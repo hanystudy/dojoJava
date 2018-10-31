@@ -22,9 +22,14 @@ public class ListDirectoryContentCommand implements FileSystemCommand {
     @Override
     public void execute(Console console) throws IOException {
         String pathString = console.readLine("input path:");
-        DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(pathString));
-        for (Path path : stream) {
-            console.format("%s\n", path.getFileName());
+        final Path path = Paths.get(pathString);
+        if (Files.notExists(path)) {
+            console.format("Path not exist\n");
+            return;
+        }
+        DirectoryStream<Path> stream = Files.newDirectoryStream(path);
+        for (Path p : stream) {
+            console.format("%s\n", p.getFileName());
         }
     }
 }

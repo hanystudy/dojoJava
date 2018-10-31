@@ -2,6 +2,7 @@ package name.hanyi.filesystemexplorer.api;
 
 import java.io.Console;
 import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -20,7 +21,11 @@ public class CreateDirectoryCommand implements FileSystemCommand {
     @Override
     public void execute(Console console) throws IOException {
         String pathString = console.readLine("input path:");
-        Files.createDirectories(Paths.get(pathString));
-        console.format("%s\n", "Directory created.");
+        try {
+            Files.createDirectories(Paths.get(pathString));
+            console.format("%s\n", "Directory created.");
+        } catch (FileAlreadyExistsException ex) {
+            console.format("Path already exist\n");
+        }
     }
 }

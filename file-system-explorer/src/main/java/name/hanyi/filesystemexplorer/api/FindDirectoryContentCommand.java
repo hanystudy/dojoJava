@@ -30,11 +30,16 @@ public class FindDirectoryContentCommand implements FileSystemCommand {
     @Override
     public void execute(Console console) throws IOException {
         String pathString = console.readLine("input path:");
+        final Path path = Paths.get(pathString);
+        if (Files.notExists(path)) {
+            console.format("Path not exist\n");
+            return;
+        }
         String patternString = console.readLine("input pattern:");
         Finder finder = new Finder(patternString);
-        Files.walkFileTree(Paths.get(pathString), finder);
-        for (Path path : finder.getResult()) {
-            console.format("%s\n", path);
+        Files.walkFileTree(path, finder);
+        for (Path p : finder.getResult()) {
+            console.format("%s\n", p);
         }
     }
 
