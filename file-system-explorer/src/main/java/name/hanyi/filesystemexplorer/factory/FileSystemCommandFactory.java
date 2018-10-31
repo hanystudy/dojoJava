@@ -2,6 +2,7 @@ package name.hanyi.filesystemexplorer.factory;
 
 import name.hanyi.filesystemexplorer.api.CopyCommand;
 import name.hanyi.filesystemexplorer.api.CreateDirectoryCommand;
+import name.hanyi.filesystemexplorer.api.CreateFileCommand;
 import name.hanyi.filesystemexplorer.api.ExitCommand;
 import name.hanyi.filesystemexplorer.api.FileStoreCommand;
 import name.hanyi.filesystemexplorer.api.FileSystemCommand;
@@ -25,6 +26,7 @@ public class FileSystemCommandFactory {
     private static FileSystemCommand[] commandList = new FileSystemCommand[]{
             new PrintByteCommand(),
             new PrintTextCommand(),
+            new CreateFileCommand(),
             new ListDirectoryContentCommand(),
             new FindDirectoryContentCommand(),
             new CreateDirectoryCommand(),
