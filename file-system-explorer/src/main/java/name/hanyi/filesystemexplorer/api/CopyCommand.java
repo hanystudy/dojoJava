@@ -1,5 +1,8 @@
 package name.hanyi.filesystemexplorer.api;
 
+import name.hanyi.filesystemexplorer.model.FileSystemModel;
+import name.hanyi.filesystemexplorer.util.PathUtil;
+
 import java.io.Console;
 import java.io.IOException;
 import java.nio.file.DirectoryNotEmptyException;
@@ -21,12 +24,12 @@ public class CopyCommand extends SimpleFileSystemCommand {
     }
 
     @Override
-    public void execute(Console console) throws IOException {
+    public void execute(Console console, FileSystemModel fileSystemModel) throws IOException {
         String sourcePathString = console.readLine("input source path:");
-        Path sourcePath = Paths.get(sourcePathString);
+        Path sourcePath = PathUtil.getAbsolutePath(fileSystemModel, Paths.get(sourcePathString));
         if (Files.exists(sourcePath)) {
             String targetPathString = console.readLine("input target path:");
-            Path targetPath = Paths.get(targetPathString);
+            Path targetPath = PathUtil.getAbsolutePath(fileSystemModel, Paths.get(targetPathString));
             if (Files.exists(targetPath)) {
                 String replace = console.readLine("Target path exists, overwrite? (y)");
                 try {

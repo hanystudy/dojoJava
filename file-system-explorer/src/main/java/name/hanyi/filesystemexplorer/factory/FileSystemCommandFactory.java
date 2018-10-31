@@ -1,5 +1,6 @@
 package name.hanyi.filesystemexplorer.factory;
 
+import name.hanyi.filesystemexplorer.api.ChangeDirectoryCommand;
 import name.hanyi.filesystemexplorer.api.CopyCommand;
 import name.hanyi.filesystemexplorer.api.CreateDirectoryCommand;
 import name.hanyi.filesystemexplorer.api.CreateFileCommand;
@@ -33,6 +34,7 @@ public class FileSystemCommandFactory {
             new ListDirectoryContentCommand(),
             new FindDirectoryContentCommand(),
             new CreateDirectoryCommand(),
+            new ChangeDirectoryCommand(),
             new CopyCommand(),
             new MoveCommand(),
             new RemoveCommand(),

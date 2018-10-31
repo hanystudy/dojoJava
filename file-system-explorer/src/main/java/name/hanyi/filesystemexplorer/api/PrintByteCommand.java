@@ -1,5 +1,8 @@
 package name.hanyi.filesystemexplorer.api;
 
+import name.hanyi.filesystemexplorer.model.FileSystemModel;
+import name.hanyi.filesystemexplorer.util.PathUtil;
+
 import java.io.Console;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,8 +22,8 @@ public class PrintByteCommand extends SimpleFileSystemCommand {
     }
 
     @Override
-    public void execute(Console console) throws IOException {
-        Path path = getPath(console);
+    public void execute(Console console, FileSystemModel fileSystemModel) throws IOException {
+        Path path = PathUtil.getAbsolutePath(fileSystemModel, getPath(console));
         try {
             int number = getNumberOfBytesPerLine(console);
             StringBuilder builder = getHexString(path, number);

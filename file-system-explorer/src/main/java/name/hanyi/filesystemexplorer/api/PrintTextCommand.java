@@ -1,5 +1,8 @@
 package name.hanyi.filesystemexplorer.api;
 
+import name.hanyi.filesystemexplorer.model.FileSystemModel;
+import name.hanyi.filesystemexplorer.util.PathUtil;
+
 import java.io.BufferedReader;
 import java.io.Console;
 import java.io.IOException;
@@ -22,8 +25,8 @@ public class PrintTextCommand extends SimpleFileSystemCommand {
     }
 
     @Override
-    public void execute(Console console) throws IOException {
-        Path path = getPath(console);
+    public void execute(Console console, FileSystemModel fileSystemModel) throws IOException {
+        Path path = PathUtil.getAbsolutePath(fileSystemModel, getPath(console));
         try (BufferedReader reader = Files.newBufferedReader(path)) {
             StringBuilder builder = new StringBuilder();
             String line = null;

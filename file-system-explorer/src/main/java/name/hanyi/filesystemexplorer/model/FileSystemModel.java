@@ -15,6 +15,7 @@ public class FileSystemModel {
     }
 
     public void setCurrentDirectory(Path currentDirectory) {
+        currentDirectory = currentDirectory.normalize();
         this.currentDirectory = currentDirectory;
     }
 }
