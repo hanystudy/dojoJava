@@ -9,6 +9,7 @@ import name.hanyi.filesystemexplorer.api.FindDirectoryContentCommand;
 import name.hanyi.filesystemexplorer.api.ListDirectoryContentCommand;
 import name.hanyi.filesystemexplorer.api.MoveCommand;
 import name.hanyi.filesystemexplorer.api.PresentDirectoryCommand;
+import name.hanyi.filesystemexplorer.api.PrintByteCommand;
 import name.hanyi.filesystemexplorer.api.RemoveCommand;
 import name.hanyi.filesystemexplorer.api.RootDirectoriesCommand;
 
@@ -21,6 +22,7 @@ public class FileSystemCommandFactory {
 
     private static Map<String, FileSystemCommand> commandMap = new HashMap<>();
     private static FileSystemCommand[] commandList = new FileSystemCommand[]{
+            new PrintByteCommand(),
             new ListDirectoryContentCommand(),
             new FindDirectoryContentCommand(),
             new CreateDirectoryCommand(),
