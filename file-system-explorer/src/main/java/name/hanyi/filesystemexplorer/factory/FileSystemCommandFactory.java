@@ -7,6 +7,7 @@ import name.hanyi.filesystemexplorer.api.FileStoreCommand;
 import name.hanyi.filesystemexplorer.api.FileSystemCommand;
 import name.hanyi.filesystemexplorer.api.FindDirectoryContentCommand;
 import name.hanyi.filesystemexplorer.api.ListDirectoryContentCommand;
+import name.hanyi.filesystemexplorer.api.MoveCommand;
 import name.hanyi.filesystemexplorer.api.PresentDirectoryCommand;
 import name.hanyi.filesystemexplorer.api.RemoveCommand;
 import name.hanyi.filesystemexplorer.api.RootDirectoriesCommand;
@@ -24,6 +25,7 @@ public class FileSystemCommandFactory {
             new FindDirectoryContentCommand(),
             new CreateDirectoryCommand(),
             new CopyCommand(),
+            new MoveCommand(),
             new RemoveCommand(),
             new PresentDirectoryCommand(),
             new FileStoreCommand(),
