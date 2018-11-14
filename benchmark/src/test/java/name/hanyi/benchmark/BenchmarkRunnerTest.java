@@ -2,6 +2,7 @@ package name.hanyi.benchmark;
 
 import name.hanyi.benchmark.datastructure.BaseDataStructure;
 import name.hanyi.benchmark.datastructure.HArrayList;
+import name.hanyi.benchmark.datastructure.HLinkedList;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,8 +24,14 @@ public class BenchmarkRunnerTest {
     }
 
     @Test
-    public void testRun() throws IOException {
+    public void testArrayList() throws IOException {
         BaseDataStructure<String> dataStructure = new HArrayList<>();
+        runner.execute(dataStructure);
+    }
+
+    @Test
+    public void testLinkedList() throws IOException {
+        BaseDataStructure<String> dataStructure = new HLinkedList<>();
         runner.execute(dataStructure);
     }
 }
