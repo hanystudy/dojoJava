@@ -26,10 +26,13 @@ public class BenchmarkRunner {
     public void execute(BaseDataStructure<String> dataStructure) throws IOException {
         PrintStream writer = System.out;
         for (Benchmark benchmark : benchmarks) {
+            System.gc();
             Instant start = Instant.now();
+            long startMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
             benchmark.run(dataStructure);
             Instant stop = Instant.now();
-            writer.format("Benchmark for %s on %s: %s\n", benchmark.getName(), dataStructure.getName(), Duration.between(start, stop));
+            long stopMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+            writer.format("Benchmark for %s on %s: %s %db\n", benchmark.getName(), dataStructure.getName(), Duration.between(start, stop), stopMem - startMem);
         }
     }
 
