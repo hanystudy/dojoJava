@@ -8,7 +8,6 @@
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
-apply plugin: 'application'
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -28,4 +27,9 @@ dependencies {
 
 tasks.withType(JavaCompile) {
     options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+}
+
+task run(type: JavaExec) {
+    main = "BenchmarkMain"
+    classpath = sourceSets.main.runtimeClasspath
 }
