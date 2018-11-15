@@ -4,6 +4,8 @@ import name.hanyi.benchmark.datastructure.BaseDataStructure;
 
 import java.util.Collection;
 import java.util.Queue;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 public abstract class AbstractQueue<E> implements BaseDataStructure<E> {
 
@@ -31,5 +33,17 @@ public abstract class AbstractQueue<E> implements BaseDataStructure<E> {
     @Override
     public void removeAll(Collection<E> targetList) {
         this.list.removeAll(targetList);
+    }
+
+    @Override
+    public Stream<E> reduce(Function<E, E> fn) {
+        return list.stream()
+                .map(e -> fn.apply(e));
+    }
+
+    @Override
+    public Stream<E> parallel(Function<E, E> fn) {
+        return list.parallelStream()
+                .map(e -> fn.apply(e));
     }
 }
