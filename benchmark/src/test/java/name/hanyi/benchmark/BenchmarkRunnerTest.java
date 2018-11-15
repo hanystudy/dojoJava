@@ -1,11 +1,11 @@
 package name.hanyi.benchmark;
 
 import name.hanyi.benchmark.datastructure.BaseDataStructure;
-import name.hanyi.benchmark.datastructure.HArrayList;
-import name.hanyi.benchmark.datastructure.HCopyOnWriteArrayList;
-import name.hanyi.benchmark.datastructure.HHashSet;
-import name.hanyi.benchmark.datastructure.HLinkedList;
-import name.hanyi.benchmark.datastructure.HVector;
+import name.hanyi.benchmark.datastructure.list.HArrayList;
+import name.hanyi.benchmark.datastructure.list.HCopyOnWriteArrayList;
+import name.hanyi.benchmark.datastructure.set.HHashSet;
+import name.hanyi.benchmark.datastructure.list.HLinkedList;
+import name.hanyi.benchmark.datastructure.list.HVector;
 import org.junit.Before;
 import org.junit.Test;
 

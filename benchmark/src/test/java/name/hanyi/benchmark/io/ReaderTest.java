@@ -1,7 +1,7 @@
 package name.hanyi.benchmark.io;
 
 import name.hanyi.benchmark.datastructure.BaseDataStructure;
-import name.hanyi.benchmark.datastructure.HArrayList;
+import name.hanyi.benchmark.datastructure.list.HArrayList;
 import org.junit.Test;
 
 import java.io.IOException;

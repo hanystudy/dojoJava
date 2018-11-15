@@ -1,6 +1,8 @@
 package name.hanyi.benchmark;
 
 import name.hanyi.benchmark.category.Benchmark;
+import name.hanyi.benchmark.category.ClearBenchmark;
+import name.hanyi.benchmark.category.RemoveBenchmark;
 import name.hanyi.benchmark.datastructure.BaseDataStructure;
 import name.hanyi.benchmark.io.Reader;
 import name.hanyi.benchmark.io.SimpleReader;
@@ -16,7 +18,9 @@ public class BenchmarkRunner {
     private final Reader<String> reader;
 
     private Benchmark[] benchmarks = new Benchmark[] {
-        new CreateBenchmark()
+        new CreateBenchmark(),
+        new ClearBenchmark(),
+        new RemoveBenchmark()
     };
 
     public BenchmarkRunner(Path path) {
@@ -32,7 +36,7 @@ public class BenchmarkRunner {
             benchmark.run(dataStructure);
             Instant stop = Instant.now();
             long stopMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-            writer.format("Benchmark for %s on %s: %s %db\n", benchmark.getName(), dataStructure.getName(), Duration.between(start, stop), stopMem - startMem);
+            writer.format("Benchmark for %s on %-30s %-10s %10db\n", benchmark.getName(), dataStructure.getName(), Duration.between(start, stop), stopMem - startMem);
         }
     }
 
