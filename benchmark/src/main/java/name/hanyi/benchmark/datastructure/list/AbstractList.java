@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
@@ -63,5 +64,17 @@ public abstract class AbstractList<E> implements BaseDataStructure<E> {
         List<E> newList = list.stream().collect(Collectors.toList());
         Collections.sort(newList, comparator);
         return newList;
+    }
+
+    @Override
+    public List<E> shuffle(Random random) {
+        List<E> newList = list.stream().collect(Collectors.toList());
+        Collections.shuffle(newList, random);
+        return newList;
+    }
+
+    @Override
+    public int search(E e, Comparator<E> comparator) {
+        return Collections.binarySearch(list, e, comparator);
     }
 }

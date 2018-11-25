@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 import java.util.stream.Stream;
@@ -25,5 +26,9 @@ public interface BaseDataStructure<E> {
 
     Map<E, List<E>> groupBy(UnaryOperator<E> fn);
 
-    List<E> sort(Comparator<E> list);
+    List<E> sort(Comparator<E> comparator);
+
+    List<E> shuffle(Random random);
+
+    int search(E e, Comparator<E> comparator);
 }
