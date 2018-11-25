@@ -3,6 +3,8 @@ package name.hanyi.benchmark.datastructure.list;
 import name.hanyi.benchmark.datastructure.BaseDataStructure;
 
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -54,5 +56,12 @@ public abstract class AbstractList<E> implements BaseDataStructure<E> {
     public Map<E, List<E>> groupBy(UnaryOperator<E> fn) {
         return list.parallelStream()
                 .collect(Collectors.groupingByConcurrent(fn));
+    }
+
+    @Override
+    public List<E> sort(Comparator<E> comparator) {
+        List<E> newList = list.stream().collect(Collectors.toList());
+        Collections.sort(newList, comparator);
+        return newList;
     }
 }

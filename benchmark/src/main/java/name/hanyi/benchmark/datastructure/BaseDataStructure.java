@@ -1,6 +1,7 @@
 package name.hanyi.benchmark.datastructure;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -23,4 +24,6 @@ public interface BaseDataStructure<E> {
     Stream<E> parallel(Function<E, E> fn);
 
     Map<E, List<E>> groupBy(UnaryOperator<E> fn);
+
+    List<E> sort(Comparator<E> list);
 }

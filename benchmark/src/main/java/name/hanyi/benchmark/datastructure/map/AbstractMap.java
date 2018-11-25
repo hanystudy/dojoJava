@@ -3,6 +3,8 @@ package name.hanyi.benchmark.datastructure.map;
 import name.hanyi.benchmark.datastructure.BaseDataStructure;
 
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -57,5 +59,12 @@ public abstract class AbstractMap<E> implements BaseDataStructure<E> {
         return list.keySet()
                 .parallelStream()
                 .collect(Collectors.groupingByConcurrent(e -> fn.apply(e)));
+    }
+
+    @Override
+    public List<E> sort(Comparator<E> comparator) {
+        List<E> newList = list.keySet().stream().collect(Collectors.toList());
+        Collections.sort(newList, comparator);
+        return newList;
     }
 }
