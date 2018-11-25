@@ -4,7 +4,10 @@ import name.hanyi.benchmark.datastructure.BaseDataStructure;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public abstract class AbstractList<E> implements BaseDataStructure<E> {
@@ -45,5 +48,11 @@ public abstract class AbstractList<E> implements BaseDataStructure<E> {
     public Stream<E> parallel(Function<E, E> fn) {
         return list.parallelStream()
                 .map(e -> fn.apply(e));
+    }
+
+    @Override
+    public Map<E, List<E>> groupBy(UnaryOperator<E> fn) {
+        return list.parallelStream()
+                .collect(Collectors.groupingByConcurrent(fn));
     }
 }

@@ -2,6 +2,7 @@ package name.hanyi.benchmark;
 
 import name.hanyi.benchmark.category.Benchmark;
 import name.hanyi.benchmark.category.ClearBenchmark;
+import name.hanyi.benchmark.category.GroupByBenchmark;
 import name.hanyi.benchmark.category.ParallelBenchmark;
 import name.hanyi.benchmark.category.ReductionBenchmark;
 import name.hanyi.benchmark.category.RemoveBenchmark;
@@ -24,7 +25,8 @@ public class BenchmarkRunner {
         new ClearBenchmark(),
         new RemoveBenchmark(),
         new ReductionBenchmark(),
-        new ParallelBenchmark()
+        new ParallelBenchmark(),
+        new GroupByBenchmark()
     };
 
     public BenchmarkRunner(Path path) {

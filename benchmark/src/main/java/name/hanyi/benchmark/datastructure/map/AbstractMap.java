@@ -3,8 +3,11 @@ package name.hanyi.benchmark.datastructure.map;
 import name.hanyi.benchmark.datastructure.BaseDataStructure;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public abstract class AbstractMap<E> implements BaseDataStructure<E> {
@@ -47,5 +50,12 @@ public abstract class AbstractMap<E> implements BaseDataStructure<E> {
         return list.entrySet()
                 .parallelStream()
                 .map(e -> fn.apply(e.getKey()));
+    }
+
+    @Override
+    public Map<E, List<E>> groupBy(UnaryOperator<E> fn) {
+        return list.keySet()
+                .parallelStream()
+                .collect(Collectors.groupingByConcurrent(e -> fn.apply(e)));
     }
 }
