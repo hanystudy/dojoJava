@@ -50,6 +50,11 @@ public class JdbcContext {
             conn.commit();
         } catch (IOException |SQLException ex) {
             ex.printStackTrace();
+            try {
+                conn.rollback();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             throw new RuntimeException("db execute error");
         } finally {
             try {
