@@ -37,17 +37,26 @@ public class JdbcContext {
             while ((line = reader.readLine()) != null) {
                 content.append(line);
             }
+            conn.setAutoCommit(false);
             String[] statements = content.toString().split(";");
             for (String statement : statements) {
                 if (!statement.trim().isEmpty()) {
-                    st.executeUpdate(statement);
+                    st.addBatch(statement);
                     System.out.println(">>" + statement);
                 }
-
             }
+            st.executeBatch();
+            conn.commit();
         } catch (IOException |SQLException ex) {
             ex.printStackTrace();
             throw new RuntimeException("db execute error");
+        } finally {
+            try {
+                conn.setAutoCommit(true);
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                throw new RuntimeException("db execute error");
+            }
         }
     }
 
