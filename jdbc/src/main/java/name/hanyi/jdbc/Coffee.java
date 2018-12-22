@@ -27,4 +27,24 @@ public class Coffee {
             throw new RuntimeException("db execute error");
         }
     }
+
+    public void modifyPrices(float percentage) {
+        Connection conn = ds.getConnection();
+        try (Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
+            String statement = "select COF_NAME, PRICE from COFFEES";
+            ResultSet rs = st.executeQuery(statement);
+            while (rs.next()) {
+                String coffeeName = rs.getString("COF_NAME");
+                float price = rs.getFloat("PRICE");
+                System.out.format("coffeeName: %s, price: %f\n", coffeeName, price);
+                rs.updateFloat("PRICE", price * percentage);
+                rs.updateRow();
+                rs.refreshRow();
+                System.out.format("coffeeName: %s, discounted price: %f\n", coffeeName, rs.getFloat("PRICE"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new RuntimeException("db execute error");
+        }
+    }
 }
