@@ -24,6 +24,7 @@ public class JdbcContext {
         coffee.viewAll();
         coffee.modifyPrices(0.5F);
         Supplier supplier = new Supplier(ds);
+        supplier.addNewSuppliers();
         supplier.viewAll();
     }
 
